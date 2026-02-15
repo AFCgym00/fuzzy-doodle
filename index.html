@@ -1,39 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Azhar Fitness | 30-Day Transformation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azhar Fitness Center | 30-Day Fat Loss Pro</title>
   
   <style>
+    /* --- AZHAR FITNESS PREMIUM CSS --- */
     :root {
-      --primary: #00ff99;
-      --primary-dark: #00cc7a;
-      --bg-dark: #0a0a0a;
-      --card-bg: rgba(255, 255, 255, 0.05);
+      --gold: #C5A059;
+      --gold-glow: rgba(197, 160, 89, 0.4);
+      --silver: #E0E0E0;
+      --bg-black: #050505;
+      --card-bg: rgba(20, 20, 20, 0.9);
       --text-main: #ffffff;
-      --text-dim: #b3b3b3;
+      --text-dim: #a0a0a0;
+      --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-dark);
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-black);
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* --- BACKGROUND BLUR EFFECTS --- */
-    .blob {
-      position: fixed;
+    /* --- NAVIGATION --- */
+    nav {
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(5, 5, 5, 0.95);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+    }
+
+    .logo img { height: 60px; filter: drop-shadow(0 0 10px var(--gold-glow)); }
+
+    /* --- HERO --- */
+    header {
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+      padding: 0 5%;
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      line-height: 1.1;
+    }
+
+    header h1 span { color: var(--gold); display: block; text-shadow: 0 0 30px var(--gold-glow); }
+
+    .hero-tagline { max-width: 600px; margin: 20px auto 35px; color: var(--text-dim); font-size: 1.1rem; }
+
+    /* --- BUTTONS --- */
+    .btn {
+      display: inline-block;
+      padding: 16px 35px;
+      background: linear-gradient(135deg, var(--gold), #9e7e43);
+      color: #000;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 4px;
+      text-transform: uppercase;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px var(--gold-glow); filter: brightness(1.1); }
+
+    /* --- PRO CALCULATOR --- */
+    .section-padding { padding: 80px 5%; max-width: 1200px; margin: auto; }
+
+    .calc-card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 15px;
+      border: 1px solid var(--gold);
+    }
+
+    h2.section-title { text-align: center; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; letter-spacing: 2px; }
+
+    input, select {
+      width: 100%; padding: 15px; margin-bottom: 15px;
+      background: #111; border: 1px solid #333; color: #fff; border-radius: 6px;
+    }
+
+    .res-box {
+      margin-top: 25px; padding: 20px; border-radius: 8px;
+      background: rgba(197, 160, 89, 0.05); border: 1px solid rgba(197, 160, 89, 0.2);
+      display: none;
+    }
+
+    .res-row { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding: 8px 0; }
+    .res-val { color: var(--gold); font-weight: bold; }
+
+    /* --- PLANS GRID --- */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .plan-card {
+      background: var(--card-bg); padding: 40px; border-radius: 12px; border: 1px solid #222;
+      text-align: center; transition: var(--transition);
+    }
+    .plan-card:hover { border-color: var(--gold); transform: scale(1.02); }
+    .price { font-size: 2.5rem; font-weight: 900; margin: 20px 0; }
+
+    /* --- FOOTER --- */
+    footer { padding: 40px; text-align: center; border-top: 1px solid #1a1a1a; color: var(--text-dim); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="195068.png" alt="AFC Logo">
+    </div>
+    <a href="#plans" class="btn" style="padding: 10px 20px; font-size: 0.7rem;">Enroll Now</a>
+  </nav>
+
+  <header>
+    <h1>30-DAY <span>FAT LOSS PRO</span></h1>
+    <p class="hero-tagline">Stop guessing. Use the automated system engineered by Azhar Fitness Center to track, adjust, and transform.</p>
+    <a href="#calculator" class="btn">Try Pro Calculator</a>
+  </header>
+
+  <section class="section-padding" id="calculator">
+    <h2 class="section-title">Macro Calculator Demo</h2>
+    <div class="calc-card">
+      <input type="number" id="weight" placeholder="Weight (kg)">
+      <select id="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <select id="activity">
+        <option value="1.2">Low Activity</option>
+        <option value="1.4">Moderate Activity</option>
+        <option value="1.6">High Activity</option>
+      </select>
+      <button class="btn" style="width: 100%;" onclick="calculateMacros()">Get My Blueprint</button>
+
+      <div class="res-box" id="results">
+        <div class="res-row"><span>Daily Calories</span> <span class="res-val" id="r-cal"></span></div>
+        <div class="res-row"><span>Protein</span> <span class="res-val" id="r-pro"></span></div>
+        <div class="res-row"><span>Carbs</span> <span class="res-val" id="r-carb"></span></div>
+        <div class="res-row"><span>Fats</span> <span class="res-val" id="r-fat"></span></div>
+        <p style="font-size: 0.7rem; color: #777; margin-top: 15px; text-align: center;">Weekly auto-adjustments available in Pro Excel sheet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" id="plans">
+    <h2 class="section-title">Program Tiers</h2>
+    <div class="grid">
+      <div class="plan-card">
+        <h3>BASIC</h3>
+        <div class="price">₹2,999</div>
+        <p>Auto-Calculator + PDF Guide</p><br>
+        <a href="https://wa.me/917786888111?text=I%20want%20BASIC" class="btn">Join Basic</a>
+      </div>
+      <div class="plan-card" style="border-color: var(--gold); position: relative;">
+        <span style="position: absolute; top: 10px; right: 10px; background: var(--gold); color: #000; padding: 2px 10px; font-size: 0.6rem; font-weight: bold; border-radius: 20px;">POPULAR</span>
+        <h3>STANDARD</h3>
+        <div class="price">₹4,999</div>
+        <p>Pro Excel + Weekly Check-ins</p><br>
+        <a href="https://wa.me/917786888111?text=I%20want%20STANDARD" class="btn">Join Standard</a>
+      </div>
+      <div class="plan-card">
+        <h3>PREMIUM</h3>
+        <div class="price">₹7,999+</div>
+        <p>Personal Coaching + Custom Diet</p><br>
+        <a href="https://wa.me/917786888111?text=I%20want%20PREMIUM" class="btn">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" style="text-align: center; background: #0a0a0a;">
+    <h2 class="section-title">The Pro System</h2>
+    <p style="color: var(--text-dim); margin-bottom: 30px;">Clients receive the AFC Master Excel Sheet with built-in Weekly Auto-Adjustment logic.</p>
+    <div style="border: 1px dashed #444; padding: 40px; border-radius: 20px; display: inline-block;">
+      <span style="font-size: 3rem;">📊</span>
+      <p><strong>AFC_FatLoss_v2.xlsx</strong></p>
+      <p style="font-size: 0.8rem; color: #555;">Download link provided after enrollment</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 AZHAR FITNESS CENTER. ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <script>
+    function calculateMacros() {
+      const w = parseFloat(document.getElementById('weight').value);
+      const g = document.getElementById('gender').value;
+      const act = parseFloat(document.getElementById('activity').value);
+
+      if (!w) return alert("Enter weight");
+
+      const base = (g === "Male") ? w * 24 : w * 22;
+      const maintenance = base * act;
+      const calories = maintenance * 0.8;
+      const protein = w * 2.2;
+      const fat = w * 0.7;
+      const carbs = (calories - (protein * 4 + fat * 9)) / 4;
+
+      document.getElementById('r-cal').innerText = Math.round(calories) + " kcal";
+      document.getElementById('r-pro').innerText = Math.round(protein) + "g";
+      document.getElementById('r-carb').innerText = Math.round(carbs) + "g";
+      document.getElementById('r-fat').innerText = Math.round(fat) + "g";
+      document.getElementById('results').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
       width: 300px;
       height: 300px;
       background: var(--primary);
